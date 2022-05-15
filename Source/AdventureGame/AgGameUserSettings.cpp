@@ -1,4 +1,5 @@
 ﻿#include "AgGameUserSettings.h"
+#include "AudioMixer.h"
 
 UAgGameUserSettings* UAgGameUserSettings::GetUserSettings()
 {
@@ -34,4 +35,18 @@ void UAgGameUserSettings::SetEffectVolume(const float Value)
 void UAgGameUserSettings::SetMusicVolume(const float Value)
 {
 	MusicVolume = Value;
+}
+
+void UAgGameUserSettings::ApplyNonResolutionSettings()
+{
+	ApplyAudioSettings();
+	Super::ApplyNonResolutionSettings();
+}
+
+void UAgGameUserSettings::ApplyAudioSettings()
+{
+	/*static ConstructorHelpers::FObjectFinder<Audio::IAudioMixer> AudioMixerFinder(TEXT("/Game/Audio/SoundMix"));
+	if (AudioMixerFinder.Succeeded()) {
+		//AudioMixerFinder->
+	}*/
 }

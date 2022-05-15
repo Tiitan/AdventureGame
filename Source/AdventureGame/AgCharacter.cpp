@@ -124,11 +124,11 @@ void AAgCharacter::TryUpdateTarget()
 	for (const auto& HitResult : HitResults)
 	{
 		// Check if hit actor is Targetable
-		const auto TagInterface = Cast<IGameplayTagAssetInterface>(HitResult.Actor.Get());
+		const auto TagInterface = Cast<IGameplayTagAssetInterface>(HitResult.GetActor());
 		static auto TargetTag = FGameplayTag::RequestGameplayTag("Targetable");
 		if (TagInterface && TagInterface->HasMatchingGameplayTag(TargetTag))
 		{
-			BestTarget = HitResult.Actor.Get();
+			BestTarget = HitResult.GetActor();
 			break; // TODO: multi target priority
 		}
 	}

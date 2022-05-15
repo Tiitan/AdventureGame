@@ -39,4 +39,8 @@ protected:
 	
 	UPROPERTY(config)
 	float MusicVolume;
+
+private:
+	virtual void ApplyNonResolutionSettings() override;
+	void ApplyAudioSettings();
 };
